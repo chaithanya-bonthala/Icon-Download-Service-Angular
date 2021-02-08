@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { IconsComponent } from './icons/icons.component';
+
+const routes: Routes = [
+  { path: 'icons', component: IconsComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
