@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Icon } from 'src/app/models/icon';
 
 @Component({
   selector: 'app-icon-drawer',
@@ -11,7 +11,7 @@ export class IconDrawerComponent implements OnInit, OnChanges {
 
   public copyButtonLabel = "Copy";
 
-  @Input() icon;
+  @Input() icon!: Icon;
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private http: HttpClient) { }
@@ -20,7 +20,7 @@ export class IconDrawerComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if(!changes.icon.firstChange) {
+    if (!changes.icon.firstChange) {
       this.copyButtonLabel = "Copy";
     }
   }
@@ -29,21 +29,21 @@ export class IconDrawerComponent implements OnInit, OnChanges {
     this.close.emit();
   }
 
-  copyInputText(inputElement){
+  copyInputText(inputElement: any) {
     inputElement.select();
     document.execCommand('copy');
     inputElement.setSelectionRange(0, 0);
     this.copyButtonLabel = "Copied";
   }
 
-  downloadIcon(fileType, fileName) {
+  downloadIcon(fileType: string, fileName: string) {
     // TODO: Fix the file names and the path to the images
     // Below is a hack to make the image download work temporarily
     // HACK START
     const serverPath = location.origin + "/assets/icons/" + fileType + fileName.replace("icon-", "/") + "." + fileType;
     // HACK END
     this.http.get(`${serverPath}`, { responseType: 'arraybuffer' }).subscribe(
-      (result: ArrayBuffer) => {this.saveData(result, fileName, fileType)},
+      (result: ArrayBuffer) => { this.saveData(result, fileName, fileType) },
       err => console.log(err)
     )
   }
@@ -52,8 +52,8 @@ export class IconDrawerComponent implements OnInit, OnChanges {
     let tempElement = document.createElement("i");
     tempElement.className = className;
     document.body.appendChild(tempElement);
-    let character = window.getComputedStyle( tempElement, ':before' )
-        .content.replace(/'|"/g, '');
+    let character = window.getComputedStyle(tempElement, ':before')
+      .content.replace(/'|"/g, '');
     tempElement.remove();
     return "\\" + character.charCodeAt(0).toString(16);
   }
@@ -62,18 +62,17 @@ export class IconDrawerComponent implements OnInit, OnChanges {
     let a: any = document.createElement("a");
     a.setAttribute("style", "display: none;");
     document.body.appendChild(a);
-    return function (data, fileName, fileType) {
-            const blob = new Blob([data], { type: 'image/'+fileType });
-            if(navigator.msSaveOrOpenBlob) {
-              navigator.msSaveOrOpenBlob(blob, fileName+"."+fileType);
-            } else {
-              const url = window.URL.createObjectURL(blob);
-              a.href = url;
-              a.download = fileName+"."+fileType;
-              a.click();
-              window.URL.revokeObjectURL(url);
-            }
+    return function (data: BlobPart, fileName: string, fileType: string) {
+      const blob = new Blob([data], { type: 'image/' + fileType });
+      if (navigator.msSaveOrOpenBlob) {
+        navigator.msSaveOrOpenBlob(blob, fileName + "." + fileType);
+      } else {
+        const url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = fileName + "." + fileType;
+        a.click();
+        window.URL.revokeObjectURL(url);
+      }
     };
   }());
-
 }
