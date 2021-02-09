@@ -34,7 +34,7 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/",
+              "node_modules/bootstrap/scss/bootstrap.scss",
               "src/assets/icons.min.css",
               "src/styles.scss"
             ],
