@@ -96,20 +96,6 @@
                                 (click)="downloadIcon('png' , selectedIcon.iconClass)" tabindex="0">PNG</span>
                         </p>
                     </div>
-                    <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 pr-5">
-                        <h3>Icon Font</h3>
-                        <form class="form-inline">
-                            <div class="input-group mb-2">
-                                <input #codeText [readonly]="true" class="form-control" id="searchInput" name="search"
-                                    type="text"
-                                    value="{{'&lt;i class=&quot;' + selectedIcon.iconClass +'&quot;&gt;&lt;/i&gt;'}}">
-                                <button (click)="copyInputText(codeText)"
-                                    [class.copy-button-active]="copyButtonLabel === 'Copied'"
-                                    class="btn btn-tertiary mb-2 ml-3">{{copyButtonLabel}}</button>
-                            </div>
-                        </form>
-                        <!-- <p class="mb-0">Follow the <a href="javascript:void(0);" class="text-primary" tabindex="0">instructions</a> to embed the icon font in your project and learn how to style your icons using CSS.</p> -->
-                    </div>
                 </div>
             </div>
         </div>
