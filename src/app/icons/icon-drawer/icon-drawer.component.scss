@@ -1,0 +1,84 @@
+:host {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 16rem;
+}
+.action-bar {
+  background: white;
+  .close-popup {
+    position: absolute;
+    top: 0;
+    right: 0.938rem;
+    cursor: pointer;
+    color: gray;
+    opacity: 1;
+    i {
+      font-size: 1.5rem;
+    }
+  }
+  .input-group {
+    width: 100%;
+    input {
+      background: white;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+  .icon-place {
+    text-align: center; //width: 80px;
+    padding: 0 1rem;
+    height: 5rem;
+    background: gray;
+    .app-icons {
+      i {
+        font-size: 3rem;
+        line-height: 5rem;
+      }
+    }
+  }
+  .download-data {
+    font-weight: bold;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+      text-decoration: underline;
+    }
+    &:hover {
+      color: blue !important;
+      text-decoration: underline;
+    }
+    &:active {
+      color: navy !important;
+      outline: none;
+    }
+    &:visited {
+      color: purple !important;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .download-ico {
+    margin-bottom: 1.5rem !important;
+  }
+}
+@media screen and (max-width: 1024px) {
+  :host {
+    left: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  .action-bar {
+    h4 {
+      margin-top: 0.938rem;
+    }
+    .icon-width {
+      width: 100%;
+    }
+    .mob-inline {
+      display: inline-block !important;
+    }
+  }
+}

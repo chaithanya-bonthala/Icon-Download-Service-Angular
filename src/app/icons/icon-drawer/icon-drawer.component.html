@@ -1,0 +1,36 @@
+<div class="action-bar p-4">
+    <div class=" col-lg-12 col-md-12">
+        <div class="d-flex mob-inline">
+            <div class="icon-width mr-4">
+                <div class="icon-place mb-3">
+                    <div class="app-icons">
+                        <i [className]="icon?.iconClass"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row w-100">
+                <div class="col-xl-6 col-lg-9 col-md-9 col-sm-9 pr-5">
+                    <h3>{{icon?.iconLabel}}</h3>
+                    <!-- <h6 class="text-bold color-gray ">IEC / ISO #000000</h6> -->
+                    <!-- <div>{{getFontUnicode(icon?.iconClass)}}</div> -->
+                    <!-- <p class="pb-1 m-0 font-1">Icon Discription</p> -->
+                    <!-- <p class="pb-1 m-0 font-1">{{icon?.iconDescription}}</p> -->
+                    <p class="mt-1 mb-0 download-ico"><span class="h4 pr-3">Download</span>
+                        <span class="text-primary pr-2 download-data" (click)="downloadIcon('svg' , icon?.iconClass)" tabindex="0">SVG</span> | <span class="text-primary pl-2 download-data" (click)="downloadIcon('png' , icon?.iconClass)" tabindex="0">PNG</span>
+                    </p>
+                </div>
+                <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 pr-5">
+                    <h3>Icon Font</h3>
+                    <form class="form-inline">
+                        <div class="input-group mb-2">
+                            <input #codeText [readonly]="true" class="form-control" id="searchInput" name="search" type="text" value="{{'&lt;i class=&quot;' + icon?.iconClass +'&quot;&gt;&lt;/i&gt;'}}">
+                            <button (click)="copyInputText(codeText)" [class.copy-button-active]="copyButtonLabel === 'Copied'" class="btn btn-tertiary mb-2 ml-3">{{copyButtonLabel}}</button>
+                        </div>
+                    </form>
+                    <!-- <p class="mb-0">Follow the <a href="javascript:void(0);" class="text-primary" tabindex="0">instructions</a> to embed the icon font in your project and learn how to style your icons using CSS.</p> -->
+                </div>
+            </div>
+        </div>
+        <button type="button" class="close-popup btn btn-link p-0 close" (click)="closeClickHandler()"><i class="icon-close-bold-sm"></i></button>
+    </div>
+</div>

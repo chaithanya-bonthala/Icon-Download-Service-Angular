@@ -1,0 +1,61 @@
+*[class*='app-icons'] {
+    ul {
+        padding: 0;
+    }
+    .icon-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .icon-wrapper {
+            flex-direction: column;
+            align-items: center;
+            width: 10.125rem; //~162px
+            height: 9.375rem; //~150px
+            justify-content: center;
+            text-align: center;
+            padding: 0.625rem; //~10px
+            margin: 0 0.625rem 0.625rem 0; //~0 10px 10px 0
+            &:hover,
+            &:focus {
+                cursor: pointer;
+                background-color: gray;
+                outline: none;
+            }
+            i {
+                font-size: 2.625rem; //~42px
+                line-height: 2.625rem; //~42px
+                margin-bottom: 0.75rem; //~12px
+            }
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+*[class*='icon-'] {
+    display: flex;
+}
+.no-result {
+    background-color: white;
+    text-align: center;
+}
+@media screen and (max-width: 768px)
+{
+    .app-icons .icon-container .icon-wrapper {
+        width: 30%;
+    }   
+}
+@media screen and (max-width: 540px)
+{
+    .app-icons .icon-container .icon-wrapper {
+        width: 47%;
+    }   
+}
+@media screen and (max-width: 380px)
+{
+    .app-icons .icon-container .icon-wrapper {
+        width: 100%;
+    }   
+}
+
