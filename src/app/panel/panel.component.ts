@@ -218,7 +218,6 @@ export class PanelComponent implements OnInit {
 
   @HostListener("keydown.esc", ["$event"])
   onEsc(event: KeyboardEvent): void {
-    alert('hit')
     this.close();
   }
 
