@@ -126,6 +126,6 @@
   content: "\e91e";
 }
 .icon-Warning:before {
-  content: '\e907';
-  background-image: url('./icons/svg/Warning.svg');
+  content: '\fff';
+  background: url('./icons/svg/Warning.svg') no-repeat;
 }

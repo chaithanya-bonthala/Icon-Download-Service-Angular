@@ -28,7 +28,7 @@ export class PanelComponent implements OnInit {
 
   @Input() config: IPanelConfig = DEFAULTCONFIG;
 
-  @Input() title = "Panel Title";
+  @Input() title = "";
 
   @Input() position = "right";
 
