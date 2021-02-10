@@ -2,7 +2,7 @@
   [class.show]="visible" [@slideAnimation]="position+'In'">
   <div class="panel-content">
     <div class="panel-header" [ngClass]="config.headerContainerClass">
-      <h3 class="panel-title" [hidden]="title">{{title}}</h3>
+      <h3 class="panel-title" *ngIf="title">{{title}}</h3>
       <button tabindex="0" type="button" (click)="close()" (keypress.enter)="close()" class="panel-close tabfocusable"
         aria-label="Close">
         <i class="icon-close-bold-sm"></i>

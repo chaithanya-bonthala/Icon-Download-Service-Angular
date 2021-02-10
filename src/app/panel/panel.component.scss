@@ -1,18 +1,21 @@
 .panel {
-  background:#f7f7f7;
+  background: #f7f7f7;
   position: fixed;
   min-width: 250px;
   z-index: 9999;
   .panel-content {
     .panel-header {
       display: flex;
-      justify-content: space-between;
+      flex-direction: row;
       align-items: center;
       margin: 24px 24px 0px 24px;
       .panel-title {
         margin: 0;
+        justify-content: start;
       }
       .panel-close {
+        margin-left: auto;
+        order: 2;
         font-size: 1.5rem;
         color: black;
         opacity: 1;
@@ -23,7 +26,7 @@
         border: none !important;
         & i {
           display: inline-block;
-          font-family: 'Unified_Icons' !important;
+          font-family: "Unified_Icons" !important;
         }
         &:hover {
           border: none !important;

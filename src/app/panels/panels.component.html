@@ -1,0 +1,135 @@
+<div class="mb-5">
+  <button class="btn btn-primary" (click)="panel.open()">Open Default
+    Panel</button>
+  <app-panel #panel="panel" [title]="'Default Panel'">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 mb-5">
+        <span class="ghost ghost-shimmer gw-50 gh-16 mb-2"></span>
+        <span class="ghost ghost-shimmer gw-100 gh-40 mb-5"></span>
+        <span class="ghost ghost-shimmer gw-50 gh-16 mb-2"></span>
+        <span class="ghost ghost-shimmer gw-100 gh-40 mb-5"></span>
+        <span class="ghost ghost-shimmer gw-50 gh-16 mb-2"></span>
+        <span class="ghost ghost-shimmer gw-100 gh-40"></span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6"><span class="ghost ghost-shimmer gw-100 gh-40"></span></div>
+      <div class="col-lg-6 col-md-6 col-sm-6 ml-auto"><span class="ghost ghost-shimmer gw-100 gh-40"></span></div>
+    </div>
+  </app-panel>
+</div>
+<div class="pb-1">
+  <button class="btn btn-primary" (click)="panel1.open()">Panel Top</button>
+  <app-panel #panel1="panel" position="top" [title]="'Top Panel'">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 mb-5">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+    </div>
+  </app-panel>
+</div>
+<div class="pb-1">
+  <button class="btn btn-primary" (click)="panel2.open()">
+    Panel Right</button>
+  <app-panel #panel2="panel" position="right" [title]="'Right Panel'">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 mb-5">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-40 mb-5"></span>
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-40 mb-5"></span>
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-40"></span>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6"><span class="ghost gw-100 gh-40"></span></div>
+      <div class="col-lg-6 col-md-6 col-sm-6 ml-auto"><span class="ghost gw-100 gh-40"></span></div>
+    </div>
+  </app-panel>
+</div>
+<div class="pb-1">
+  <button class="btn btn-primary" (click)="panel3.open()">
+    Panel Bottom</button>
+  <app-panel #panel3="panel" position="bottom" [title]="'Bottom Panel'">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 mb-5">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <span class="ghost gw-50 gh-16 mb-2"></span>
+        <span class="ghost gw-100 gh-32"></span>
+      </div>
+    </div>
+  </app-panel>
+</div>
+<div class="pb-1">
+  <button class="btn btn-primary" (click)="panel4.open()">
+    Panel Left</button>
+  <app-panel #panel4="panel" dismissPanelAt="75rem" position="left" title="Left Panel">
+    <div class="row d-flex align-items-center">
+      <div class="col-lg-2 col-md-2 col-sm-2"><span class="ghost ghost-circle-32 mb-4"></span></div>
+      <div class="col-lg-10 col-md-10 col-sm-10 ml-auto"><span class="ghost gw-50 gh-16 mb-4"></span></div>
+      <div class="col-lg-2 col-md-2 col-sm-2"><span class="ghost ghost ghost-circle-32 mb-4"></span></div>
+      <div class="col-lg-10 col-md-10 col-sm-10 ml-auto"><span class="ghost gw-50 gh-16 mb-4"></span></div>
+      <div class="col-lg-2 col-md-2 col-sm-2"><span class="ghost ghost ghost-circle-32 mb-4"></span></div>
+      <div class="col-lg-10 col-md-10 col-sm-10 ml-auto"><span class="ghost gw-50 gh-16 mb-4"></span></div>
+      <div class="col-lg-2 col-md-2 col-sm-2"><span class="ghost ghost ghost-circle-32 mb-4"></span></div>
+      <div class="col-lg-10 col-md-10 col-sm-10 ml-auto"><span class="ghost gw-50 gh-16 mb-4"></span></div>
+      <div class="col-lg-2 col-md-2 col-sm-2"><span class="ghost ghost ghost-circle-32 mb-4"></span></div>
+      <div class="col-lg-10 col-md-10 col-sm-10 ml-auto"><span class="ghost gw-50 gh-16 mb-4"></span></div>
+      <div class="col-lg-2 col-md-2 col-sm-2"><span class="ghost ghost ghost-circle-32 mb-4"></span></div>
+      <div class="col-lg-10 col-md-10 col-sm-10 ml-auto"><span class="ghost gw-50 gh-16 mb-4"></span></div>
+      <div class="col-lg-2 col-md-2 col-sm-2"><span class="ghost ghost ghost-circle-32 mb-4"></span></div>
+      <div class="col-lg-10 col-md-10 col-sm-10 ml-auto"><span class="ghost gw-50 gh-16 mb-4"></span></div>
+      <div class="col-lg-2 col-md-2 col-sm-2"><span class="ghost ghost ghost-circle-32 mb-4"></span></div>
+      <div class="col-lg-10 col-md-10 col-sm-10 ml-auto"><span class="ghost gw-50 gh-16 mb-4"></span></div>
+      <div class="col-lg-2 col-md-2 col-sm-2"><span class="ghost ghost ghost-circle-32 mb-4"></span></div>
+      <div class="col-lg-10 col-md-10 col-sm-10 ml-auto"><span class="ghost gw-50 gh-16 mb-4"></span></div>
+      <div class="col-lg-2 col-md-2 col-sm-2"><span class="ghost ghost ghost-circle-32 mb-4"></span></div>
+      <div class="col-lg-10 col-md-10 col-sm-10 ml-auto"><span class="ghost gw-50 gh-16 mb-4"></span></div>
+    </div>
+  </app-panel>
+</div>

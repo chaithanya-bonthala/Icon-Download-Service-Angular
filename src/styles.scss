@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  min-height: calc(100vh - 3.125rem);
+  padding: 7.5rem 2.25rem 4.063rem;
+  width: 1024px;
+  margin: 0 auto;
+}
+
+.panel-open {
+  overflow: hidden;
+}

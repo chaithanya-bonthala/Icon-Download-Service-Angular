@@ -1,103 +1,102 @@
 <!-- Icon Library -->
 <div class="row pb-5">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-        <p class="lead">
-            The Unified icon library contains over 200+ icons, each handcrafted for consistency and flexibility and are
-            available for use in your next project.
-            Icons are available to download in SVG and PNG for quick prototyping and presentation use or apply them
-            directly to your HTML code with the use of the <code>&lt;i&gt;</code> tag.
-            For usage and guidance, visit the
-            <a [routerLink]="['/unified-software','iconography']" class="text-primary">
-                Iconography
-            </a> page.
-        </p>
-    </div>
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <p class="lead">
+      The Unified icon library contains over 200+ icons, each handcrafted for consistency and flexibility and are
+      available for use in your next project.
+      Icons are available to download in SVG and PNG for quick prototyping and presentation use or apply them
+      directly to your HTML code with the use of the <code>&lt;i&gt;</code> tag.
+      For usage and guidance, visit the
+      <a [routerLink]="['/unified-software','iconography']" class="text-primary">
+        Iconography
+      </a> page.
+    </p>
+  </div>
 </div>
 
 <form class="search">
-    <div class="input-group tertiary-search w-100">
-        <div class="has-clear pb-5 w-100">
-            <input #input type="text" name="search" class="form-control" placeholder="Search for icon" id="searchInput"
-                [(ngModel)]="inputText" />
-            <button *ngIf="inputText?.length" (click)="inputText=''" class="clear-data" type="reset"><i
-                    class="icon-close-bold-sm"></i></button>
-        </div>
-        <span class="input-group-append">
-            <div class="input-group-text btn-tertiary-search border-0"><i class="icon-search-bold"></i></div>
-        </span>
+  <div class="input-group tertiary-search w-100">
+    <div class="has-clear pb-5 w-100">
+      <input #input type="text" name="search" class="form-control" placeholder="Search for icon" id="searchInput"
+        [(ngModel)]="inputText" />
+      <button *ngIf="inputText?.length" (click)="inputText=''" class="clear-data" type="reset"><i
+          class="icon-close-bold-sm"></i></button>
     </div>
+    <!-- <span class="input-group-append">
+      <div class="input-group-text btn-tertiary-search border-0"><i class="icon-search-bold"></i></div>
+    </span> -->
+  </div>
 </form>
 
 <!-- Generated Icons -->
 <div *ngIf="inputText !== ''" class="row pb-1">
-    <!--<div class="col-12"><h3>Search text: {{inputText}}</h3></div>-->
-    <div *ngIf="searchResults.length === 0" class="p-5 m-3 no-result w-100">
-        <h2>No results found.</h2>
-        <p>Please try searching with alternate terms.</p>
-        <p class="mb-0">Still can't find what you are looking for? Suggest an icon through the <a class="text-primary"
-                href="https://bd.brightidea.com/Unified" target="_blank"> Unified feedback site.</a></p>
-    </div>
+  <!--<div class="col-12"><h3>Search text: {{inputText}}</h3></div>-->
+  <div *ngIf="searchResults.length === 0" class="p-5 m-3 no-result w-100">
+    <h2>No results found.</h2>
+    <p>Please try searching with alternate terms.</p>
+    <p class="mb-0">Still can't find what you are looking for? Suggest an icon through the <a class="text-primary"
+        href="https://bd.brightidea.com/Unified" target="_blank"> Unified feedback site.</a></p>
+  </div>
 
-    <div class="app-icons col-12">
-        <ul class="icon-container" *ngIf="searchResults.length > 0">
-            <li class="icon-wrapper" *ngFor="let result of searchResults" (click)="togglePanel(result)">
-                <i [className]="result.iconClass"></i>
-                <p class="pt-1">
-                    {{result.iconLabel}}
-                </p>
-            </li>
-        </ul>
-    </div>
+  <div class="app-icons col-12">
+    <ul class="icon-container" *ngIf="searchResults.length > 0">
+      <li class="icon-wrapper" *ngFor="let result of searchResults" (click)="togglePanel(result)">
+        <i [className]="result.iconClass"></i>
+        <p class="pt-1">
+          {{result.iconLabel}}
+        </p>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="inputText === ''">
-        <ng-container *ngFor="let item of items">
-            <h4 class="pb-2">{{item.header}}</h4>
-            <div class="app-icons pb-5 mb-5">
-                <ul class="icon-container">
-                    <li class="icon-wrapper" *ngFor="let icon of item.icons" (click)="togglePanel(icon)"
-                        (keyup)="togglePanel(icon)" tabindex="0">
-                        <i [className]="icon.iconClass"></i>
-                        <p class="pt-1">
-                            {{icon.iconLabel}}
-                        </p>
-                    </li>
-                </ul>
-            </div>
-        </ng-container>
-    </div>
+  <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="inputText === ''">
+    <ng-container *ngFor="let item of items">
+      <h4 class="pb-2">{{item.header}}</h4>
+      <div class="app-icons pb-5 mb-5">
+        <ul class="icon-container">
+          <li class="icon-wrapper" *ngFor="let icon of item.icons" (click)="togglePanel(icon)"
+            (keydown.enter)="togglePanel(icon)" tabindex="0">
+            <i [className]="icon.iconClass"></i>
+            <p class="pt-1">
+              {{icon.iconLabel}}
+            </p>
+          </li>
+        </ul>
+      </div>
+    </ng-container>
+  </div>
 </div>
 
 <!-- <app-icon-drawer (close)="closeClick($event)" [icon]="selectedIcon" [@slideUpDown]="drawerMenuState"></app-icon-drawer> -->
 
 <app-panel #panel="panel" position="bottom" [config]="defaultPanelConfig">
-    <div class="action-bar p-4" *ngIf="selectedIcon">
-        <div class=" col-lg-12 col-md-12">
-            <div class="d-flex mob-inline">
-                <div class="icon-width mr-4">
-                    <div class="icon-place mb-3">
-                        <div class="app-icons">
-                            <i [className]="selectedIcon.iconClass"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="row w-100">
-                    <div class="col-xl-6 col-lg-9 col-md-9 col-sm-9 pr-5">
-                        <h3>{{selectedIcon.iconLabel}}</h3>
-                        <!-- <h6 class="text-bold color-gray ">IEC / ISO #000000</h6> -->
-                        <!-- <div>{{getFontUnicode(icon?.iconClass)}}</div> -->
-                        <!-- <p class="pb-1 m-0 font-1">Icon Discription</p> -->
-                        <p class="pb-1 m-0 font-1">{{selectedIcon.iconDescription}}</p>
-                        <p class="mt-1 mb-0 download-ico"><span class="h4 pr-3">Download</span>
-                            <span class="text-primary pr-2 download-data"
-                                (click)="downloadIcon('svg' , selectedIcon.iconClass)" tabindex="0">SVG</span> | <span
-                                class="text-primary pl-2 download-data"
-                                (click)="downloadIcon('png' , selectedIcon.iconClass)" tabindex="0">PNG</span>
-                        </p>
-                    </div>
-                </div>
+  <div class="action-bar p-4" *ngIf="selectedIcon">
+    <div class=" col-lg-12 col-md-12">
+      <div class="d-flex mob-inline">
+        <div class="icon-width mr-4">
+          <div class="icon-place mb-3">
+            <div class="app-icons">
+              <i [className]="selectedIcon.iconClass"></i>
             </div>
+          </div>
         </div>
+        <div class="row w-100">
+          <div class="col-xl-6 col-lg-9 col-md-9 col-sm-9 pr-5">
+            <h3>{{selectedIcon.iconLabel}}</h3>
+            <h6 class="text-bold color-gray ">IEC / ISO #000000</h6>
+            <!-- <div>{{getFontUnicode(icon?.iconClass)}}</div> -->
+            <!-- <p class="pb-1 m-0 font-1">Icon Discription</p> -->
+            <p class="pb-1 m-0 font-1">{{selectedIcon.iconDescription}}</p>
+            <p class="mt-1 mb-0 download-ico"><span class="h4 pr-3">Download</span>
+              <span class="text-primary pr-2 download-data" (click)="downloadIcon('svg' , selectedIcon.iconClass)"
+                tabindex="0">SVG</span> | <span class="text-primary pl-2 download-data"
+                (click)="downloadIcon('png' , selectedIcon.iconClass)" tabindex="0">PNG</span>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </app-panel>
