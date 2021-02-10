@@ -17,7 +17,6 @@ export class IconsComponent implements OnInit, AfterViewInit, OnDestroy {
   title = 'Icon Library';
   items: IconItems[] = [];
   searchSchemaClass = [];
-
   keyupSub: Subscription = new Subscription;
   inputText: string = '';
   searchResults: any = [];
@@ -25,6 +24,7 @@ export class IconsComponent implements OnInit, AfterViewInit, OnDestroy {
   selectedIcon!: Icon;
   public defaultPanelConfig: IPanelConfig = {
     hasOverlay: false,
+    dismissWithCloseIcon: true,
     bodyContainerClass: 'my-default-body',
     headerContainerClass: 'my-default-header'
   }
@@ -54,20 +54,24 @@ export class IconsComponent implements OnInit, AfterViewInit, OnDestroy {
             this.inputText = event.target.value.trim();
             this.items.forEach((item, index) => {
               item.icons.forEach((icon: Icon) => {
+                if (icon.iconLabel.toLowerCase().includes(this.inputText.toLowerCase())) {
+                  this.searchResults.push(icon);
+                }
+
                 // TO MAKE SEARCH NOT CASE SENSITIVE USE CODE BELOW
                 // if(icon.iconLabel.toLowerCase().indexOf(this.inputText.toLowerCase()) !== -1)
-                let segments: Array<string> = icon.iconLabel.split("-");
+                // let segments: Array<string> = icon.iconLabel.split("-");
 
-                // TODO: call shift to remove first element of the segments array i.e: "icon"
-                //segments.shift();
-                let isSelected: boolean = false;
+                // // TODO: call shift to remove first element of the segments array i.e: "icon"
+                // //segments.shift();
+                // let isSelected: boolean = false;
 
-                segments.forEach((segment) => {
-                  if (!isSelected && segment.substring(0, this.inputText.length) === this.inputText) {
-                    isSelected = true;
-                    this.searchResults.push(icon)
-                  }
-                })
+                // segments.forEach((segment) => {
+                //   if (!isSelected && segment.substring(0, this.inputText.length).toLowerCase() === this.inputText.toLowerCase()) {
+                //     isSelected = true;
+                //     this.searchResults.push(icon)
+                //   }
+                // })
               })
             })
           })
@@ -77,18 +81,14 @@ export class IconsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.keyupSub.unsubscribe();
+    if (this.keyupSub) {
+      this.keyupSub.unsubscribe();
+    }
   }
 
   public togglePanel(iconDetails: Icon) {
     this.selectedIcon = iconDetails;
     this.panelElRef.open();
-    // this.drawerMenuState = "slide-up";
-  }
-
-  public closeClick(event: any) {
-    this.panelElRef.close();
-    // this.drawerMenuState = "slide-down";
   }
 
   public downloadIcon(fileType: string, fileName: string) {

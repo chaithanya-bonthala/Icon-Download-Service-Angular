@@ -9,9 +9,117 @@ import {
   ElementRef,
   HostListener,
 } from "@angular/core";
-import { sildeAnimation } from "./panel.animations";
+
+import { animate, style, transition, trigger } from "@angular/animations";
 import { IPanelConfig, DEFAULTCONFIG } from "./panel.constants";
 import { BreakpointObserver, BreakpointState } from "@angular/cdk/layout";
+
+const sildeAnimation = trigger("slideAnimation", [
+  transition("rightIn => *", [
+    style({
+      opacity: 1,
+      transform: "translate3d(0, 0, 0)",
+    }),
+    animate(
+      "400ms ease-in-out",
+      style({
+        opacity: 0.1,
+        transform: "translate3d(100%, 0, 0)",
+      })
+    ),
+  ]),
+  transition("* => rightIn", [
+    style({
+      opacity: 0.1,
+      transform: "translate3d(100%, 0, 0)",
+    }),
+    animate(
+      "400ms ease-in-out",
+      style({
+        opacity: 1,
+        transform: "translate3d(0, 0, 0)",
+      })
+    ),
+  ]),
+  transition("leftIn => *", [
+    style({
+      opacity: 1,
+      transform: "translate3d(0, 0, 0)",
+    }),
+    animate(
+      "400ms ease-in-out",
+      style({
+        opacity: 0.1,
+        transform: "translate3d(-100%, 0, 0)",
+      })
+    ),
+  ]),
+  transition("* => leftIn", [
+    style({
+      opacity: 0.1,
+      transform: "translate3d(-100%, 0, 0)",
+    }),
+    animate(
+      "400ms ease-in-out",
+      style({
+        opacity: 1,
+        transform: "translate3d(0, 0, 0)",
+      })
+    ),
+  ]),
+  transition("bottomIn => *", [
+    style({
+      opacity: 1,
+      transform: "translate3d(0, 0, 0)",
+    }),
+    animate(
+      "400ms ease-in-out",
+      style({
+        opacity: 0.1,
+        transform: "translate3d(0, 100%, 0)",
+      })
+    ),
+  ]),
+  transition("* => bottomIn", [
+    style({
+      opacity: 0.1,
+      transform: "translate3d(0, 100%, 0)",
+    }),
+    animate(
+      "400ms ease-in-out",
+      style({
+        opacity: 1,
+        transform: "translate3d(0, 0, 0)",
+      })
+    ),
+  ]),
+  transition("topIn => *", [
+    style({
+      opacity: 1,
+      transform: "translate3d(0, 0, 0)",
+    }),
+    animate(
+      "400ms ease-in-out",
+      style({
+        opacity: 0.1,
+        transform: "translate3d(0, -100%, 0)",
+      })
+    ),
+  ]),
+  transition("* => topIn", [
+    style({
+      opacity: 0.1,
+      transform: "translate3d(0, -100%, 0)",
+    }),
+    animate(
+      "400ms ease-in-out",
+      style({
+        opacity: 1,
+        transform: "translate3d(0, 0, 0)",
+      })
+    ),
+  ]),
+]);
 
 @Component({
   selector: "app-panel",
@@ -32,7 +140,7 @@ export class PanelComponent implements OnInit {
 
   @Input() position = "right";
 
-  @Input() dismissPanelAt: string = "992px";
+  @Input() dismissPanelAt: string = "";
 
   get visible() {
     return this._visible;
@@ -45,7 +153,7 @@ export class PanelComponent implements OnInit {
     private cd: ChangeDetectorRef,
     private _renderer: Renderer2,
     private _element: ElementRef<HTMLElement>
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.backdrop = this.createOverlayContainer();
@@ -84,8 +192,14 @@ export class PanelComponent implements OnInit {
         }
       );
     }
+
     setTimeout(() => {
       this._visible = true;
+      // if(this.panelServicc.isPanlExixst()) {
+      // get current panel - config
+      // remove current panel
+      // }
+      // this.panelService.addPanel(config);
     }, 100);
   }
 
@@ -104,6 +218,7 @@ export class PanelComponent implements OnInit {
 
   @HostListener("keydown.esc", ["$event"])
   onEsc(event: KeyboardEvent): void {
+    alert('hit')
     this.close();
   }
 

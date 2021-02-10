@@ -6,5 +6,7 @@ export interface IconItems {
 export interface Icon {
     iconClass: string;
     iconLabel: string;
-    iconDescription: string;
+    iconUsage: string;
+    iconISO: string;
+    iconMeaning: string;
 }
