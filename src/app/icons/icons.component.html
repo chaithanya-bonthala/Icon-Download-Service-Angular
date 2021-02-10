@@ -90,9 +90,9 @@
             <!-- <p class="pb-1 m-0 font-1">Icon Discription</p> -->
             <p class="pb-1 m-0 font-1">{{selectedIcon.iconDescription}}</p>
             <p class="mt-1 mb-0 download-ico"><span class="h4 pr-3">Download</span>
-              <span class="text-primary pr-2 download-data" (click)="downloadIcon('svg' , selectedIcon.iconClass)"
+              <span class="text-primary pr-2 download-data" (click)="downloadIcon('svg' , selectedIcon.iconClass)" (keydown.enter)="downloadIcon('svg' , selectedIcon.iconClass)"
                 tabindex="0">SVG</span> | <span class="text-primary pl-2 download-data"
-                (click)="downloadIcon('png' , selectedIcon.iconClass)" tabindex="0">PNG</span>
+                (click)="downloadIcon('png' , selectedIcon.iconClass)" (keydown.enter)="downloadIcon('png' , selectedIcon.iconClass)" tabindex="0">PNG</span>
             </p>
           </div>
         </div>
