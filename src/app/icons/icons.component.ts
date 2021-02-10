@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef, NgZone, ChangeDetectorRef, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
 import { IconsService } from './icons.service';
 
 import { fromEvent, Subscription } from 'rxjs';
@@ -12,21 +11,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-icons',
   templateUrl: './icons.component.html',
-  styleUrls: ['./icons.component.scss'],
-  animations: [
-    trigger('slideUpDown', [
-      state('slide-up', style({
-        transform: 'translate3d(0%, 0%, 0)',
-        opacity: 1
-      })),
-      state('slide-down', style({
-        transform: 'translate3d(0, 100%, 0)',
-        opacity: 0
-      })),
-      transition('slide-down => slide-up', animate('400ms ease-in-out')),
-      transition('slide-up => slide-down', animate('400ms ease-in-out'))
-    ]),
-  ]
+  styleUrls: ['./icons.component.scss']
 })
 export class IconsComponent implements OnInit, AfterViewInit, OnDestroy {
   title = 'Icon Library';
@@ -69,7 +54,7 @@ export class IconsComponent implements OnInit, AfterViewInit, OnDestroy {
             this.inputText = event.target.value.trim();
             this.items.forEach((item, index) => {
               item.icons.forEach((icon: Icon) => {
-                // TO MAKE SEARCH NOT CASE SENSITIVE USE CODE BELOW 
+                // TO MAKE SEARCH NOT CASE SENSITIVE USE CODE BELOW
                 // if(icon.iconLabel.toLowerCase().indexOf(this.inputText.toLowerCase()) !== -1)
                 let segments: Array<string> = icon.iconLabel.split("-");
 

@@ -1,5 +1,5 @@
 .panel {
-  background: grey;
+  background:#f7f7f7;
   position: fixed;
   min-width: 250px;
   z-index: 9999;
@@ -23,6 +23,7 @@
         border: none !important;
         & i {
           display: inline-block;
+          font-family: 'Unified_Icons' !important;
         }
         &:hover {
           border: none !important;
